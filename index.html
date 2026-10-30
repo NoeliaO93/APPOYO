@@ -556,6 +556,7 @@
     text-align:center; font-size:calc((13px) * var(--fs)); color: var(--ink-soft); line-height:1.45;
   }
   .org-note{ margin-bottom:90px; }
+  .org-note{ white-space:pre-line; }
 </style>
 </head>
 <body>
@@ -655,7 +656,8 @@
       </div>
       <div class="grid" id="gridFeelings" role="group" aria-label="Cómo te sentís" data-i18n-aria="gridFeelings"></div>
       <div class="hint-row"><button class="text-link" id="btnMySupports" type="button" data-i18n="mySupports">Mi perfil</button></div>
-      <p class="org-note" data-i18n="orgNote">Una iniciativa del Consejo de la Magistratura de la Ciudad de Buenos Aires</p>
+      <p class="org-note" data-i18n="orgNote">Creada por una persona autista, para personas neurodivergentes.
+Una iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura de la Ciudad de Buenos Aires</p>
     </section>
 
     <!-- STEP 2: Causas -->
@@ -1196,13 +1198,13 @@
       musicH:"Tu música", musicEmpty:"Sumá una playlist tuya para tenerla a mano cuando la necesites.", musicAdd:"Elegir mi playlist",
       contactH:"Contacto de confianza", contactHelp:"Es la persona a la que llamás o le escribís por WhatsApp cuando lo necesitás.",
       contactNone:"Todavía no cargaste un contacto.", contactEdit:"Editar contacto", contactAddBtn:"Agregar contacto",
-      plH:"Mi playlist de Spotify", plHelp:"Pegá el link de una playlist (en Spotify: Compartir → Copiar enlace). La vas a tener a mano en tus resultados.",
-      plSave:"Guardar", plRemove:"Quitar", plBad:"No pude reconocer ese link. Tiene que ser de open.spotify.com (playlist, álbum o artista).",
+      plH:"Mi playlist de Spotify", plHelp:"Pegá el link de una playlist o canción (en Spotify: Compartir → Copiar enlace). La vas a tener a mano en tus resultados.",
+      plSave:"Guardar", plRemove:"Quitar", plBad:"No pude reconocer ese link. Pegá el link completo de open.spotify.com (canción, playlist, álbum o artista). Los links cortos tipo spotify.link no funcionan: abrilo y copiá el de la barra de direcciones.",
       plOk:"Playlist guardada.", plRemoved:"Playlist quitada.", plIdeas:"¿No tenés una? Buscá ideas en Spotify:",
       ideaSoft:"Música suave", ideaNature:"Sonidos de la naturaleza", ideaBrown:"Ruido marrón", ideaPiano:"Piano tranquilo",
       backupH:"Copia de seguridad", backupHelp:"Tu perfil se guarda solo en este dispositivo. Descargalo para pasarlo a otro celu o compu.",
       backupExport:"Descargar mi perfil", backupImport:"Cargar mi perfil", backupBad:"Ese archivo no parece ser un perfil de APPOYO.",
-      otherCat:"Otros", orgNote:"Una iniciativa del Consejo de la Magistratura de la Ciudad de Buenos Aires"
+      otherCat:"Otros", orgNote:"Creada por una persona autista, para personas neurodivergentes.\nUna iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura de la Ciudad de Buenos Aires"
     },
     en: {
       docTitle:"APPOYO — An emotional check-in",
@@ -1260,12 +1262,12 @@
       contactH:"Trusted contact", contactHelp:"The person you call or message on WhatsApp when you need to.",
       contactNone:"You haven't added a contact yet.", contactEdit:"Edit contact", contactAddBtn:"Add contact",
       plH:"My Spotify playlist", plHelp:"Paste a playlist link (in Spotify: Share → Copy link). You'll have it at hand in your results.",
-      plSave:"Save", plRemove:"Remove", plBad:"I couldn't recognize that link. It must be from open.spotify.com (playlist, album or artist).",
+      plSave:"Save", plRemove:"Remove", plBad:"I couldn't recognize that link. Paste the full open.spotify.com link (song, playlist, album or artist). Short links like spotify.link don't work: open it and copy the address from the address bar.",
       plOk:"Playlist saved.", plRemoved:"Playlist removed.", plIdeas:"Don't have one? Look for ideas on Spotify:",
       ideaSoft:"Soft music", ideaNature:"Nature sounds", ideaBrown:"Brown noise", ideaPiano:"Calm piano",
       backupH:"Backup", backupHelp:"Your profile is only saved on this device. Download it to move it to another phone or computer.",
       backupExport:"Download my profile", backupImport:"Load my profile", backupBad:"That file doesn't look like an APPOYO profile.",
-      otherCat:"Other", orgNote:"An initiative of the Consejo de la Magistratura of the City of Buenos Aires"
+      otherCat:"Other", orgNote:"Created by an autistic person, for neurodivergent people.\nAn initiative of Noelia Odriozola, with the support of the Consejo de la Magistratura of the City of Buenos Aires"
     }
   };
 
@@ -1585,8 +1587,8 @@
   function getPlaylist(){ const p = readJSON("eod_playlist", null); return (p && p.type && p.id) ? p : null; }
   function parseSpotify(s){
     s = (s || "").trim();
-    const m = s.match(/open\.spotify\.com\/(?:intl-[a-z-]+\/)?(playlist|album|artist)\/([A-Za-z0-9]+)/i) ||
-              s.match(/^spotify:(playlist|album|artist):([A-Za-z0-9]+)$/i);
+    const m = s.match(/open\.spotify\.com\/(?:intl-[a-z-]+\/)?(playlist|album|artist|track|show|episode)\/([A-Za-z0-9]+)/i) ||
+              s.match(/^spotify:(playlist|album|artist|track|show|episode):([A-Za-z0-9]+)$/i);
     return m ? { type:m[1].toLowerCase(), id:m[2] } : null;
   }
   function makeEmbed(p){
