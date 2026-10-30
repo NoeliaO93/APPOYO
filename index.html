@@ -557,6 +557,8 @@
   }
   .org-note{ margin-bottom:90px; }
   .org-note{ white-space:pre-line; }
+  a.btn{ text-decoration:none; }
+  .open-sp{ margin-top:10px; }
 </style>
 </head>
 <body>
@@ -625,6 +627,7 @@
           <button class="btn btn-ghost" id="plRemove" type="button" data-i18n="plRemove" hidden>Quitar</button>
         </div>
         <p class="prof-status" id="plStatus" aria-live="polite"></p>
+        <p class="help" data-i18n="plTip">Tip</p>
         <div class="embed-wrap" id="plPreview"></div>
         <p class="help" style="margin-top:14px" data-i18n="plIdeas">¿No tenés una? Buscá ideas en Spotify:</p>
         <div class="idea-links" id="plIdeas"></div>
@@ -1204,7 +1207,7 @@ Una iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura 
       ideaSoft:"Música suave", ideaNature:"Sonidos de la naturaleza", ideaBrown:"Ruido marrón", ideaPiano:"Piano tranquilo",
       backupH:"Copia de seguridad", backupHelp:"Tu perfil se guarda solo en este dispositivo. Descargalo para pasarlo a otro celu o compu.",
       backupExport:"Descargar mi perfil", backupImport:"Cargar mi perfil", backupBad:"Ese archivo no parece ser un perfil de APPOYO.",
-      otherCat:"Otros", orgNote:"Creada por una persona autista, para personas neurodivergentes.\nUna iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura de la Ciudad de Buenos Aires"
+      otherCat:"Otros", openSpotify:"Abrir en Spotify", plTip:"En algunas versiones para celular la canción no se reproduce completa, por eso agregamos el botón “Abrir en Spotify”.", orgNote:"Creada por una persona autista, para personas neurodivergentes.\nUna iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura de la Ciudad de Buenos Aires"
     },
     en: {
       docTitle:"APPOYO — An emotional check-in",
@@ -1267,7 +1270,7 @@ Una iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura 
       ideaSoft:"Soft music", ideaNature:"Nature sounds", ideaBrown:"Brown noise", ideaPiano:"Calm piano",
       backupH:"Backup", backupHelp:"Your profile is only saved on this device. Download it to move it to another phone or computer.",
       backupExport:"Download my profile", backupImport:"Load my profile", backupBad:"That file doesn't look like an APPOYO profile.",
-      otherCat:"Other", orgNote:"Created by an autistic person, for neurodivergent people.\nAn initiative of Noelia Odriozola, with the support of the Consejo de la Magistratura of the City of Buenos Aires"
+      otherCat:"Other", openSpotify:"Open in Spotify", plTip:"On some phone versions the song doesn't play in full, which is why we added the “Open in Spotify” button.", orgNote:"Created by an autistic person, for neurodivergent people.\nAn initiative of Noelia Odriozola, with the support of the Consejo de la Magistratura of the City of Buenos Aires"
     }
   };
 
@@ -1598,12 +1601,21 @@ Una iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura 
     f.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
     return f;
   }
+  function openLink(p){
+    const a = document.createElement("a");
+    a.className = "btn btn-ghost open-sp";
+    a.href = "https://open.spotify.com/" + p.type + "/" + p.id;
+    a.target = "_blank"; a.rel = "noopener noreferrer";
+    a.textContent = "🎵 " + t("openSpotify");
+    return a;
+  }
   function renderMusic(tone){
     const box = el("musicBox"), body = el("musicBody");
     body.innerHTML = "";
     const p = getPlaylist();
     if(p){
       body.appendChild(makeEmbed(p));
+      body.appendChild(openLink(p));
       box.hidden = false;
     } else if(tone !== "calm"){
       const para = document.createElement("p"); para.textContent = t("musicEmpty");
@@ -1617,7 +1629,7 @@ Una iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura 
   function renderPlaylistProfile(){
     const p = getPlaylist();
     const prev = el("plPreview"); prev.innerHTML = "";
-    if(p) prev.appendChild(makeEmbed(p));
+    if(p){ prev.appendChild(makeEmbed(p)); prev.appendChild(openLink(p)); }
     el("plRemove").hidden = !p;
     if(p && !el("plInput").value) el("plInput").value = "https://open.spotify.com/" + p.type + "/" + p.id;
     const ideas = [
