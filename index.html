@@ -562,6 +562,11 @@
   .open-sp{ background:#1DB954; color:#000; border:none; font-weight:700; }
   .open-sp:hover{ filter:brightness(1.06); }
   .sp-logo{ width:22px; height:22px; flex-shrink:0; }
+
+  .work-box{ margin-top:14px; display:flex; flex-direction:column; align-items:center; gap:10px;
+    background: var(--surface-alt); border-radius: var(--radius-md); padding:14px 18px; text-align:center; }
+  .work-box p{ font-weight:700; font-size:calc((15px) * var(--fs)); color: var(--ink); }
+  [hidden]{ display:none !important; }
 </style>
 </head>
 <body>
@@ -618,6 +623,13 @@
         <p class="help" data-i18n="contactHelp">Es la persona a la que llamás o le escribís por WhatsApp cuando lo necesitás.</p>
         <p class="contact-summary" id="profContact"></p>
         <button class="btn btn-ghost" id="profContactBtn" type="button">—</button>
+      </div>
+
+      <div class="prof-section">
+        <h3 data-i18n="workH">Contacto laboral (opcional)</h3>
+        <p class="help" data-i18n="workHelp">—</p>
+        <p class="contact-summary" id="profWork"></p>
+        <button class="btn btn-ghost" id="profWorkBtn" type="button">—</button>
       </div>
 
       <div class="prof-section">
@@ -701,6 +713,11 @@ Una iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura 
           <button class="btn btn-contact" id="contactActionBtn" type="button">—</button>
           <button class="btn btn-wa" id="contactWaBtn" type="button"><svg class="wa-logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg><span data-i18n="waBtn">Avisar por WhatsApp</span></button>
         </div>
+      </div>
+
+      <div class="work-box" id="workBox" hidden>
+        <p id="workQ" data-i18n="workQ">¿Necesitás avisar en el trabajo?</p>
+        <button class="btn btn-wa" id="workWaBtn" type="button"><svg class="wa-logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg><span id="workWaLabel"></span></button>
       </div>
 
       <div class="tips-box" id="pictBox" hidden>
@@ -801,7 +818,7 @@ Una iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura 
 <div class="modal-backdrop" id="sosBackdrop">
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="sosTitle">
     <h3 id="sosTitle" data-i18n="sosModalTitle">Contacto de emergencia</h3>
-    <p data-i18n="sosModalP">Guardá el nombre y número de alguien de confianza.</p>
+    <p id="sosP" data-i18n="sosModalP">Guardá el nombre y número de alguien de confianza.</p>
     <div class="field">
       <label for="contactName" data-i18n="nameLabel">Nombre</label>
       <input type="text" id="contactName" placeholder="Ej: Mamá, terapeuta, amiga..." data-i18n-ph="namePh">
@@ -810,6 +827,7 @@ Una iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura 
       <label for="contactPhone" data-i18n="phoneLabel">Teléfono</label>
       <input type="tel" id="contactPhone" placeholder="Ej: +54 9 11 1234 5678" data-i18n-ph="phonePh">
     </div>
+    <button class="text-link" id="sosRemove" type="button" data-i18n="sosRemove" hidden>Quitar este contacto</button>
     <a class="sos-call" id="sosCallBtn" href="#" style="display:none;" data-i18n="callNow">📞 Llamar ahora</a>
     <div class="modal-actions">
       <button class="btn btn-ghost" id="btnSosClose" type="button" data-i18n="close">Cerrar</button>
@@ -1143,6 +1161,10 @@ Una iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura 
     { id:"notocar",  cat:"personas",    emoji:"✋", es:"Que no me toquen",          en:"Not being touched" }
   ];
 
+  const WA_WORK_DEFAULTS = {
+    es: "Hola, no me estoy sintiendo bien y necesito un momento para recuperarme. Vuelvo en un rato.",
+    en: "Hi, I'm not feeling well and I need a moment to recover. I'll be back in a while."
+  };
   const WA_DEFAULTS = {
     es: "Hola, me estoy desregulando, voy a necesitar un espacio tranquilo y sin estímulos cerca.",
     en: "Hi, I'm starting to get dysregulated. I'm going to need a quiet space with no stimulation nearby."
@@ -1210,7 +1232,11 @@ Una iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura 
       ideaSoft:"Música suave", ideaNature:"Sonidos de la naturaleza", ideaBrown:"Ruido marrón", ideaPiano:"Piano tranquilo",
       backupH:"Copia de seguridad", backupHelp:"Tu perfil se guarda solo en este dispositivo. Descargalo para pasarlo a otro celu o compu.",
       backupExport:"Descargar mi perfil", backupImport:"Cargar mi perfil", backupBad:"Ese archivo no parece ser un perfil de APPOYO.",
-      otherCat:"Otros", openSpotify:"Abrir en Spotify", plTip:"En algunas versiones para celular la canción no se reproduce completa, por eso agregamos el botón “Abrir en Spotify”.", orgNote:"Creada por una persona autista, para personas neurodivergentes.\nUna iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura de la Ciudad de Buenos Aires"
+      otherCat:"Otros",
+      workH:"Contacto laboral (opcional)", workHelp:"Si querés, sumá a alguien del trabajo para avisarle por WhatsApp desde los resultados. Tiene su propio mensaje y también podés sumarle tus apoyos.",
+      workNone:"No cargaste un contacto laboral.", workAdd:"Agregar contacto laboral", workEdit:"Editar contacto laboral",
+      sosWorkTitle:"Contacto laboral", sosWorkP:"Guardá el nombre y número de la persona del trabajo a la que querés avisar. Incluí el código de país (ej: +54 9 11 1234 5678).",
+      workQ:"¿Necesitás avisar en el trabajo?", workBtn:"Avisar a {n}", workFallback:"mi contacto laboral", waWorkTitle:"Avisar en el trabajo", sosRemove:"Quitar este contacto", openSpotify:"Abrir en Spotify", plTip:"En algunas versiones para celular la canción no se reproduce completa, por eso agregamos el botón “Abrir en Spotify”.", orgNote:"Creada por una persona autista, para personas neurodivergentes.\nUna iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura de la Ciudad de Buenos Aires"
     },
     en: {
       docTitle:"APPOYO — An emotional check-in",
@@ -1273,7 +1299,11 @@ Una iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura 
       ideaSoft:"Soft music", ideaNature:"Nature sounds", ideaBrown:"Brown noise", ideaPiano:"Calm piano",
       backupH:"Backup", backupHelp:"Your profile is only saved on this device. Download it to move it to another phone or computer.",
       backupExport:"Download my profile", backupImport:"Load my profile", backupBad:"That file doesn't look like an APPOYO profile.",
-      otherCat:"Other", openSpotify:"Open in Spotify", plTip:"On some phone versions the song doesn't play in full, which is why we added the “Open in Spotify” button.", orgNote:"Created by an autistic person, for neurodivergent people.\nAn initiative of Noelia Odriozola, with the support of the Consejo de la Magistratura of the City of Buenos Aires"
+      otherCat:"Other",
+      workH:"Work contact (optional)", workHelp:"If you want, add someone from work to alert via WhatsApp from your results. It has its own message and you can add your supports to it too.",
+      workNone:"You haven't added a work contact.", workAdd:"Add work contact", workEdit:"Edit work contact",
+      sosWorkTitle:"Work contact", sosWorkP:"Save the name and number of the person at work you want to alert. Include the country code (e.g. +54 9 11 1234 5678).",
+      workQ:"Do you need to let someone at work know?", workBtn:"Alert {n}", workFallback:"my work contact", waWorkTitle:"Alert someone at work", sosRemove:"Remove this contact", openSpotify:"Open in Spotify", plTip:"On some phone versions the song doesn't play in full, which is why we added the “Open in Spotify” button.", orgNote:"Created by an autistic person, for neurodivergent people.\nAn initiative of Noelia Odriozola, with the support of the Consejo de la Magistratura of the City of Buenos Aires"
     }
   };
 
@@ -1310,8 +1340,9 @@ Una iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura 
     b.setAttribute("aria-label", t("langTitle"));
     b.title = t("langTitle");
   }
-  function waDefault(){ return WA_DEFAULTS[lang]; }
-  function isWaDefault(m){ return m === WA_DEFAULTS.es || m === WA_DEFAULTS.en; }
+  let sosMode = "main", waMode = "main";
+  function waDefault(){ return (waMode === "work" ? WA_WORK_DEFAULTS : WA_DEFAULTS)[lang]; }
+  function isWaDefault(m){ const D = waMode === "work" ? WA_WORK_DEFAULTS : WA_DEFAULTS; return m === D.es || m === D.en; }
 
   function setLang(next){
     const wasDefault = el("waMsg").value.trim() === waDefault() || el("waMsg").value.trim() === "";
@@ -1319,6 +1350,8 @@ Una iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura 
     storeSet("eod_lang", lang);
     applyStatic();
     renderAll();
+    refreshSosTexts();
+    refreshWaTexts();
     if(waBackdrop.classList.contains("open")){
       if(wasDefault) el("waMsg").value = waDefault();
       refreshWaRecipient();
@@ -1501,12 +1534,18 @@ Una iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura 
         btn.onclick = () => { window.location.href = "tel:" + saved.phone.replace(/\s+/g, ""); };
       } else {
         btn.textContent = t("addContact");
-        btn.onclick = openSos;
+        btn.onclick = () => openSos("main");
       }
       contactBox.hidden = false;
     } else contactBox.hidden = true;
 
     btnSosCall.classList.toggle("pulse", tone === "dys");
+
+    const wc = getContact("work");
+    if(wc && wc.phone){
+      el("workWaLabel").textContent = t("workBtn", { n: wc.name || t("workFallback") });
+      el("workBox").hidden = false;
+    } else el("workBox").hidden = true;
 
     // Pictogramas de los apoyos elegidos
     const pg = el("pictGrid"); pg.innerHTML = "";
@@ -1712,14 +1751,20 @@ Una iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura 
   [sosBackdrop, waBackdrop, a11yBackdrop].forEach(b => b.addEventListener("click", (e) => { if(e.target === b) closeModal(b); }));
 
   /* ---------------- SOS modal ---------------- */
-  function getContact(){ return readJSON("eod_contact", null); }
-  function openSos(){
-    const saved = getContact();
-    if(saved){
-      el("contactName").value = saved.name || "";
-      el("contactPhone").value = saved.phone || "";
-      updateSosCallLink(saved.phone);
-    }
+  const CKEY = { main:"eod_contact", work:"eod_contact_work" };
+  function getContact(mode){ return readJSON(CKEY[mode === "work" ? "work" : "main"], null); }
+  function refreshSosTexts(){
+    el("sosTitle").textContent = t(sosMode === "work" ? "sosWorkTitle" : "sosModalTitle");
+    el("sosP").textContent = t(sosMode === "work" ? "sosWorkP" : "sosModalP");
+  }
+  function openSos(mode){
+    sosMode = (mode === "work") ? "work" : "main";
+    const saved = getContact(sosMode);
+    el("contactName").value = (saved && saved.name) || "";
+    el("contactPhone").value = (saved && saved.phone) || "";
+    if(sosMode === "main") updateSosCallLink(saved && saved.phone); else el("sosCallBtn").style.display = "none";
+    el("sosRemove").hidden = !(sosMode === "work" && saved && saved.phone);
+    refreshSosTexts();
     openModal(sosBackdrop, "contactName");
   }
   function closeSos(){ closeModal(sosBackdrop); }
@@ -1731,11 +1776,16 @@ Una iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura 
     } else link.style.display = "none";
   }
   el("btnSosClose").addEventListener("click", closeSos);
+  el("sosRemove").addEventListener("click", () => {
+    storeDel(CKEY.work); renderProfileContact(); refreshWaRecipient(); closeSos();
+    if(el("screenResult").classList.contains("active")) showResult(true);
+  });
   el("btnSosSave").addEventListener("click", () => {
     const name = el("contactName").value.trim();
     const phone = el("contactPhone").value.trim();
-    storeSet("eod_contact", JSON.stringify({name, phone}));
-    updateSosCallLink(phone);
+    if(sosMode === "work" && !phone && !name) storeDel(CKEY.work);
+    else storeSet(CKEY[sosMode], JSON.stringify({name, phone}));
+    if(sosMode === "main") updateSosCallLink(phone);
     updateSosButton();
     refreshWaRecipient();
     renderProfileContact();
@@ -1827,8 +1877,12 @@ Una iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura 
     const c = getContact();
     el("profContact").textContent = (c && c.phone) ? ((c.name ? c.name + " · " : "") + c.phone) : t("contactNone");
     el("profContactBtn").textContent = (c && c.phone) ? t("contactEdit") : t("contactAddBtn");
+    const w = getContact("work");
+    el("profWork").textContent = (w && w.phone) ? ((w.name ? w.name + " · " : "") + w.phone) : t("workNone");
+    el("profWorkBtn").textContent = (w && w.phone) ? t("workEdit") : t("workAdd");
   }
-  el("profContactBtn").addEventListener("click", openSos);
+  el("profContactBtn").addEventListener("click", () => openSos("main"));
+  el("profWorkBtn").addEventListener("click", () => openSos("work"));
 
   let onbReturn = null, onbReopenWa = false;
   function showProfile(){
@@ -1860,7 +1914,7 @@ Una iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura 
   el("btnSosEdit").addEventListener("click", showProfile);
 
   /* ---------------- Backup ---------------- */
-  const BACKUP_KEYS = ["eod_contact","eod_supports","eod_playlist","eod_wa_msg","eod_wa_inc","eod_lang","eod_a11y","eod_theme"];
+  const BACKUP_KEYS = ["eod_contact","eod_contact_work","eod_supports","eod_playlist","eod_wa_msg","eod_wa_msg_work","eod_wa_inc","eod_wa_inc_work","eod_lang","eod_a11y","eod_theme"];
   el("bkExport").addEventListener("click", () => {
     const o = { app:"appoyo", v:1, data:{} };
     BACKUP_KEYS.forEach(k => { const v = store(k); if(v != null) o.data[k] = v; });
@@ -1889,8 +1943,13 @@ Una iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura 
   });
 
   /* ---------------- WhatsApp ---------------- */
+  const INCKEY = { main:"eod_wa_inc", work:"eod_wa_inc_work" };
+  const WAKEY = { main:"eod_wa_msg", work:"eod_wa_msg_work" };
+  function refreshWaTexts(){
+    el("waTitle").textContent = t(waMode === "work" ? "waWorkTitle" : "waTitle");
+  }
   function getWaMsg(){
-    const m = store("eod_wa_msg");
+    const m = store(WAKEY[waMode]);
     return (m && !isWaDefault(m)) ? m : waDefault();
   }
   function showWaNote(text){
@@ -1900,7 +1959,7 @@ Una iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura 
   }
   function refreshWaRecipient(){
     const box = el("waRecipient");
-    const c = getContact();
+    const c = getContact(waMode);
     box.textContent = "";
     if(c && c.phone){
       box.appendChild(document.createTextNode(t("waTo", { n: c.name || t("waFallbackName"), p: c.phone })));
@@ -1910,7 +1969,7 @@ Una iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura 
     const b = document.createElement("button");
     b.type = "button"; b.className = "text-link";
     b.textContent = (c && c.phone) ? t("waChange") : t("waAddContact");
-    b.addEventListener("click", openSos);
+    b.addEventListener("click", () => openSos(waMode));
     box.appendChild(b);
   }
   function supportsLine(){
@@ -1923,9 +1982,11 @@ Una iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura 
     p.textContent = line || t("noSupports");
     p.style.opacity = (el("waIncludeSup").checked && line) ? "1" : ".55";
   }
-  function openWa(){
+  function openWa(mode){
+    waMode = (mode === "work") ? "work" : "main";
+    refreshWaTexts();
     el("waMsg").value = getWaMsg();
-    el("waIncludeSup").checked = store("eod_wa_inc") !== "0";
+    el("waIncludeSup").checked = store(INCKEY[waMode]) !== "0";
     showWaNote("");
     refreshWaRecipient();
     refreshWaPreview();
@@ -1935,12 +1996,12 @@ Una iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura 
 
   function sendWa(){
     const msg = el("waMsg").value.trim() || waDefault();
-    if(isWaDefault(msg)) storeDel("eod_wa_msg"); else storeSet("eod_wa_msg", msg);
+    if(isWaDefault(msg)) storeDel(WAKEY[waMode]); else storeSet(WAKEY[waMode], msg);
     const inc = el("waIncludeSup").checked;
-    storeSet("eod_wa_inc", inc ? "1" : "0");
-    const c = getContact();
+    storeSet(INCKEY[waMode], inc ? "1" : "0");
+    const c = getContact(waMode);
     const digits = ((c && c.phone) || "").replace(/\D/g, "");
-    if(!digits){ showWaNote(t("waNoNumber")); openSos(); return; }
+    if(!digits){ showWaNote(t("waNoNumber")); openSos(waMode); return; }
     if(digits.length < 10){ showWaNote(t("waShort")); return; }
     const line = inc ? supportsLine() : "";
     const full = line ? (msg + "\n\n" + line) : msg;
@@ -1950,8 +2011,9 @@ Una iniciativa de Noelia Odriozola, con el apoyo del Consejo de la Magistratura 
     document.body.appendChild(a); a.click(); a.remove();
   }
 
-  el("btnWaBar").addEventListener("click", openWa);
-  el("contactWaBtn").addEventListener("click", openWa);
+  el("btnWaBar").addEventListener("click", () => openWa("main"));
+  el("contactWaBtn").addEventListener("click", () => openWa("main"));
+  el("workWaBtn").addEventListener("click", () => openWa("work"));
   el("waClose").addEventListener("click", closeWa);
   el("waSend").addEventListener("click", sendWa);
   el("waReset").addEventListener("click", () => { el("waMsg").value = waDefault(); });
